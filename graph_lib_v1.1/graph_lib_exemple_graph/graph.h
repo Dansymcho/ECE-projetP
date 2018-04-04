@@ -105,20 +105,28 @@ class VertexInterface
         // Un label de visualisation de la valeur du sommet
         grman::WidgetText m_label_value;
 
+
+
+
         // Une image de "remplissage"
         grman::WidgetImage m_img;
 
         // Un label indiquant l'index du sommet
         grman::WidgetText m_label_idx;
 
+        //Indiquer la valeur de croissance
+        grman::WidgetText m_label_crs;
+
         // Une boite pour le label précédent
+
         grman::WidgetText m_box_label_idx;
+        grman::WidgetText m_box_label_crs;
 
     public :
 
         // Le constructeur met en place les éléments de l'interface
         // voir l'implémentation dans le .cpp
-        VertexInterface(int idx, int x, int y, std::string pic_name="", int pic_idx=0);
+        VertexInterface(int idx, float crs, int x, int y, std::string pic_name="", int pic_idx=0);
 };
 
 
@@ -142,7 +150,7 @@ class Vertex
         double m_value;
 
         ///taux de croissance
-        double m_croissance;
+        float m_croissance;
 
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
         std::shared_ptr<VertexInterface> m_interface = nullptr;
@@ -299,7 +307,7 @@ class Graph
         Graph (GraphInterface *interface=nullptr) :
             m_interface(interface)  {  }
 
-        void add_interfaced_vertex(int idx, double value, int x, int y, std::string pic_name="", int pic_idx=0 );
+        void add_interfaced_vertex(int idx, double value, float croissance, int x, int y, std::string pic_name="", int pic_idx=0 );
         void add_interfaced_edge(int idx, int vert1, int vert2, double weight=0);
 
         /// Méthode spéciale qui construit un graphe arbitraire (démo)
