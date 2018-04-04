@@ -54,13 +54,13 @@
 1522771978 source:c:\users\térence\documents\ece ing2\info\graph_lib_v1\graph_lib_exemple_graph\graph.cpp
 	"graph.h"
 
-1522776651 source:c:\users\térence\ece-projetp\graph_lib_v1.1\graph_lib_exemple_graph\grman\coords.cpp
+1522767647 source:c:\users\térence\documents\ece ing2\info\graph_lib_v1.1\graph_lib_exemple_graph\grman\coords.cpp
 	"coords.h"
 
-1522776651 c:\users\térence\ece-projetp\graph_lib_v1.1\graph_lib_exemple_graph\grman\coords.h
+1522767647 c:\users\térence\documents\ece ing2\info\graph_lib_v1.1\graph_lib_exemple_graph\grman\coords.h
 	<cmath>
 
-1522776651 source:c:\users\térence\ece-projetp\graph_lib_v1.1\graph_lib_exemple_graph\grman\grman.cpp
+1522767647 source:c:\users\térence\documents\ece ing2\info\graph_lib_v1.1\graph_lib_exemple_graph\grman\grman.cpp
 	<cmath>
 	<unordered_map>
 	<unordered_set>
@@ -74,16 +74,16 @@
 	<loadpng.h>
 	<jpgalleg.h>
 
-1522776651 c:\users\térence\ece-projetp\graph_lib_v1.1\graph_lib_exemple_graph\grman\grman.h
+1522767647 c:\users\térence\documents\ece ing2\info\graph_lib_v1.1\graph_lib_exemple_graph\grman\grman.h
 	<allegro.h>
 	<string>
 	"grman_couleurs.h"
 	"coords.h"
 	"widget.h"
 
-1522776651 c:\users\térence\ece-projetp\graph_lib_v1.1\graph_lib_exemple_graph\grman\grman_couleurs.h
+1522767648 c:\users\térence\documents\ece ing2\info\graph_lib_v1.1\graph_lib_exemple_graph\grman\grman_couleurs.h
 
-1522776651 c:\users\térence\ece-projetp\graph_lib_v1.1\graph_lib_exemple_graph\grman\widget.h
+1522767648 c:\users\térence\documents\ece ing2\info\graph_lib_v1.1\graph_lib_exemple_graph\grman\widget.h
 	"grman.h"
 	<iostream>
 	<string>
@@ -91,21 +91,18 @@
 	<algorithm>
 	<allegro.h>
 
-1522776651 source:c:\users\térence\ece-projetp\graph_lib_v1.1\graph_lib_exemple_graph\grman\widget.cpp
+1522767648 source:c:\users\térence\documents\ece ing2\info\graph_lib_v1.1\graph_lib_exemple_graph\grman\widget.cpp
 	"widget.h"
 
-1522776651 source:c:\users\térence\ece-projetp\graph_lib_v1.1\graph_lib_exemple_graph\main.cpp
+1522767647 source:c:\users\térence\documents\ece ing2\info\graph_lib_v1.1\graph_lib_exemple_graph\main.cpp
 	"grman/grman.h"
 	<iostream>
 	"graph.h"
 
-1522839996 c:\users\térence\ece-projetp\graph_lib_v1.1\graph_lib_exemple_graph\graph.h
+1522772732 c:\users\térence\documents\ece ing2\info\graph_lib_v1.1\graph_lib_exemple_graph\graph.h
 	<vector>
 	<map>
 	<string>
 	<memory>
 	"grman/grman.h"
-
-1522839336 source:c:\users\térence\ece-projetp\graph_lib_v1.1\graph_lib_exemple_graph\graph.cpp
-	"graph.h"
 

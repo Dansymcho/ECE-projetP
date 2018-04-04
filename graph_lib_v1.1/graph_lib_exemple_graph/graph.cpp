@@ -5,7 +5,7 @@
 ****************************************************/
 
 /// Le constructeur met en place les éléments de l'interface
-VertexInterface::VertexInterface(int idx, float crs, int x, int y, std::string pic_name, int pic_idx)
+VertexInterface::VertexInterface(int idx,float crs, int x, int y, std::string pic_name, int pic_idx)
 {
     // La boite englobante
     m_top_box.set_pos(x, y);
@@ -37,20 +37,8 @@ VertexInterface::VertexInterface(int idx, float crs, int x, int y, std::string p
     m_box_label_idx.set_dim(20,12);
     m_box_label_idx.set_bg_color(BLANC);
 
-
-    m_top_box.add_child( m_box_label_crs );
-    m_box_label_crs.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
-    m_box_label_idx.set_dim(10,10);
-    m_box_label_idx.set_bg_color(BLEU);
-
-
     m_box_label_idx.add_child( m_label_idx );
     m_label_idx.set_message( std::to_string(idx) );
-
-    m_box_label_crs.add_child( m_label_crs);
-    m_label_crs.set_message( std::to_string(crs) );
-
-
 }
 
 
@@ -176,9 +164,9 @@ void Graph::make_example()
 
     /// Les sommets doivent être définis avant les arcs
     // Ajouter le sommet d'indice 0 de valeur 30 en x=200 et y=100 avec l'image clown1.jpg etc...
-    add_interfaced_vertex(0, 100.0, 1.5, 200, 400, "Krill.jpg");
-    add_interfaced_vertex(1, 50.0, 1.2, 400,  200, "Petitpoisson.jpg");
-    add_interfaced_vertex(2,  10.0, 1.1, 600, 000, "Morse.jpg");
+    add_interfaced_vertex(0, 100.0, 200, 400, "Krill.jpg");
+    add_interfaced_vertex(1, 50.0, 400, 200, "Petitpoisson.jpg");
+    add_interfaced_vertex(2,  10.0, 600, 000, "Morse.jpg");
 
 
 
@@ -211,7 +199,7 @@ void Graph::update()
 }
 
 /// Aide à l'ajout de sommets interfacés
-void Graph::add_interfaced_vertex(int idx, double value, float crs, int x, int y, std::string pic_name, int pic_idx )
+void Graph::add_interfaced_vertex(int idx, double value, double croissance, int x, int y, std::string pic_name, int pic_idx )
 {
     if ( m_vertices.find(idx)!=m_vertices.end() )
     {
@@ -219,7 +207,7 @@ void Graph::add_interfaced_vertex(int idx, double value, float crs, int x, int y
         throw "Error adding vertex";
     }
     // Création d'une interface de sommet
-    VertexInterface *vi = new VertexInterface(idx,crs, x, y, pic_name, pic_idx);
+    VertexInterface *vi = new VertexInterface(idx, x, y, pic_name, pic_idx);
     // Ajout de la top box de l'interface de sommet
     m_interface->m_main_box.add_child(vi->m_top_box);
     // On peut ajouter directement des vertices dans la map avec la notation crochet :
