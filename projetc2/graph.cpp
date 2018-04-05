@@ -1,5 +1,6 @@
 #include "graph.h"
 
+
 /***************************************************
                     VERTEX
 ****************************************************/
@@ -366,6 +367,11 @@ void Graph::update()
      if ( m_interface->m_bretour.clicked() )
     {
         std::cout << "retour au menu" << std::endl;
+
+
+
+
+
     }
 
 }
@@ -416,7 +422,7 @@ void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weig
 int Menu::menu1(BITMAP *menu)
 {
     blit(menu, grman::page, 0,0,0,0,SCREEN_W,SCREEN_H);
-       blit(grman::page,screen, 0,0,0,0,SCREEN_W,SCREEN_H);
+    blit(grman::page,screen, 0,0,0,0,SCREEN_W,SCREEN_H);
 
     int mn;
     if((mouse_b&1) && (mouse_x>230 && mouse_x<570))
@@ -537,7 +543,7 @@ Menu::Menu()
 
 }
 
-void Menu::Menu2Update()
+/*void Menu::Menu2Update()
 {
     m_menu2.update();
 
@@ -557,7 +563,7 @@ void Menu::Menu2Update()
 
     }
 }
-
+*/
 
 
 
