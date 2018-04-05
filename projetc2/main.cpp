@@ -10,6 +10,7 @@ int main()
    BITMAP *menu;
    menu = create_bitmap(SCREEN_W,SCREEN_H);
    menu = load_bitmap("pics/menu.bmp",NULL);
+   int choix = 0;
 
    Menu m2;
 
@@ -17,9 +18,9 @@ int main()
     /// Le nom du répertoire où se trouvent les images à charger
     grman::set_pictures_path("pics");
 
-    /*/// Un exemple de graphe
+    /// Un exemple de graphe
     Graph g;
-    g.make_example();*/
+    //g.make_example();
 
 
 
@@ -30,14 +31,18 @@ int main()
     {
 
 
-        //Menu::creermenu2(m2);
-        //m2.Menu2Update();
-       Menu::menu1(menu);
 
+        m2.Menu2Update();
+      //m2.menu1(menu);
+      if(choix == 0)
+        {
+            choix = m2.menu1(menu);
+        m2.choixmenu1(choix, &g);
+        }
 
 
         /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
-        //g.update();
+        g.update();
 
         /// Mise à jour générale (clavier/souris/buffer etc...)
         grman::mettre_a_jour();

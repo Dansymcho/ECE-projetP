@@ -264,6 +264,17 @@ class GraphInterface
         /// Dans cette boite seront ajoutés des boutons de contrôle etc...
         grman::WidgetBox m_tool_box;
 
+    grman::WidgetBox m_menu2;
+    grman::WidgetBox m_titre;
+    grman::WidgetText m_ssmenu;
+    grman::WidgetButton m_bnouveau;
+    grman::WidgetText m_nouveau;
+    grman::WidgetButton m_benlever;
+    grman::WidgetText m_enlever;
+    grman::WidgetButton m_bretour;
+    grman::WidgetText m_retour;
+
+
 
         /// A compléter éventuellement par des widgets de décoration ou
         /// d'édition (boutons ajouter/enlever ...)
@@ -327,14 +338,20 @@ private:
     int mn;
     grman::WidgetBox m_menu2;
     grman::WidgetBox m_titre;
-    grman::WidgetText m_legende;
+    grman::WidgetText m_ssmenu;
+    grman::WidgetButton m_bnouveau;
+    grman::WidgetText m_nouveau;
+    grman::WidgetButton m_benlever;
+    grman::WidgetText m_enlever;
+    grman::WidgetButton m_bretour;
+    grman::WidgetText m_retour;
 
 public:
     Menu();
     //~Menu();
     int menu1(BITMAP *menu);
-    void choixmenu1(int mn);
-    void creermenu2(Menu m2);
+    void choixmenu1(int mn, Graph *g);
+
     void Menu2Update();
 
 

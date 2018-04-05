@@ -148,6 +148,52 @@ GraphInterface::GraphInterface(int x, int y, int w, int h)
     m_main_box.set_dim(908,720);
     m_main_box.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
     m_main_box.set_bg_color(BLANCJAUNE);
+
+    m_top_box.add_child(m_menu2);
+    ///boite du menu2
+    m_menu2.set_frame(700, 420, 200, 180);
+    m_menu2.set_bg_color(GRISCLAIR);
+    m_menu2.set_moveable();
+
+    ///boite titre
+    m_menu2.add_child( m_titre );
+    m_titre.set_dim(180, 20);
+    m_titre.set_gravity_y( grman::GravityY::Up );
+
+
+    ///message : sous-menu
+    m_titre.add_child( m_ssmenu );
+    m_ssmenu.set_message("SOUS-MENU");
+    m_ssmenu.set_gravity_y(grman::GravityY::Up );
+
+
+    ///bouton ajout
+    m_menu2.add_child( m_bnouveau );
+    m_bnouveau.set_frame(12,40,180,30);
+    m_bnouveau.set_bg_color(BLEU);
+
+    ///message ajout
+    m_bnouveau.add_child(m_nouveau);
+    m_nouveau.set_message("Nouvelle espèce");
+
+    ///boite enlever
+    m_menu2.add_child( m_benlever );
+    m_benlever.set_frame(12,80,180,30);
+    m_benlever.set_bg_color(BLEU);
+
+    ///messge enlever
+    m_benlever.add_child(m_enlever);
+    m_enlever.set_message("Annuler espèce");
+
+    ///boite retour
+    m_menu2.add_child( m_bretour );
+    m_bretour.set_frame(12,120,180,30);
+    m_bretour.set_bg_color(BLEU);
+
+    ///message retour
+    m_bretour.add_child(m_retour);
+    m_retour.set_message("Retour au menu");
+
 }
 
 
@@ -305,6 +351,23 @@ void Graph::update()
     for (auto &elt : m_edges)
         elt.second.post_update();
 
+        // m_menu2.update();
+
+   if ( m_interface->m_bnouveau.clicked() )
+    {
+        std::cout << "Nouvelle espèce" << std::endl;
+    }
+
+     if ( m_interface->m_benlever.clicked() )
+    {
+        std::cout << "Annuler espèce" << std::endl;
+    }
+
+     if ( m_interface->m_bretour.clicked() )
+    {
+        std::cout << "retour au menu" << std::endl;
+    }
+
 }
 
 /// Aide à l'ajout de sommets interfacés
@@ -363,6 +426,7 @@ int Menu::menu1(BITMAP *menu)
         {
             mn=1;
 
+
             return mn;
         }
 
@@ -384,10 +448,8 @@ int Menu::menu1(BITMAP *menu)
 }
 
 
-void Menu::choixmenu1(int mn)
+void Menu::choixmenu1(int mn, Graph *g)
 {
-
-    Graph g;
 
     switch(mn)
     {
@@ -395,7 +457,7 @@ void Menu::choixmenu1(int mn)
         clear_bitmap(screen);
 
 
-        g.make_example();
+        g->make_example();
 
         break;
 
@@ -403,7 +465,10 @@ void Menu::choixmenu1(int mn)
         clear_bitmap(screen);
 
 
-        g.make_example();
+
+
+        g->make_example();
+
 
         break;
 
@@ -412,7 +477,7 @@ void Menu::choixmenu1(int mn)
         clear_bitmap(screen);
 
 
-        g.make_example();
+        g->make_example();
 
         break;
     }
@@ -422,7 +487,7 @@ void Menu::choixmenu1(int mn)
 Menu::Menu()
 {
     ///boite du menu2
-    m_menu2.set_frame(600, 320, 200, 280);
+    m_menu2.set_frame(600, 420, 200, 180);
     m_menu2.set_bg_color(GRISCLAIR);
     m_menu2.set_moveable();
 
@@ -431,22 +496,68 @@ Menu::Menu()
     m_titre.set_dim(180, 20);
     m_titre.set_gravity_y( grman::GravityY::Up );
 
-    //On ajoute un texte en bas centré
-    m_titre.add_child( m_legende );
-    m_legende.set_message("SOUS-MENU");
-    m_legende.set_gravity_y(grman::GravityY::Up );
+
+    ///message : sous-menu
+    m_titre.add_child( m_ssmenu );
+    m_ssmenu.set_message("SOUS-MENU");
+    m_ssmenu.set_gravity_y(grman::GravityY::Up );
+
+
+    ///bouton ajout
+    m_menu2.add_child( m_bnouveau );
+    m_bnouveau.set_frame(12,40,180,30);
+    m_bnouveau.set_bg_color(BLEU);
+
+    ///message ajout
+    m_bnouveau.add_child(m_nouveau);
+    m_nouveau.set_message("Nouvelle espèce");
+
+    ///boite enlever
+    m_menu2.add_child( m_benlever );
+    m_benlever.set_frame(12,80,180,30);
+    m_benlever.set_bg_color(BLEU);
+
+    ///messge enlever
+    m_benlever.add_child(m_enlever);
+    m_enlever.set_message("Annuler espèce");
+
+    ///boite retour
+    m_menu2.add_child( m_bretour );
+    m_bretour.set_frame(12,120,180,30);
+    m_bretour.set_bg_color(BLEU);
+
+    ///message retour
+    m_bretour.add_child(m_retour);
+    m_retour.set_message("Retour au menu");
+
+
+
+
+
 
 }
+
 void Menu::Menu2Update()
 {
     m_menu2.update();
 
+   if ( m_bnouveau.clicked() )
+    {
+        std::cout << "Nouvelle espèce" << std::endl;
+    }
+
+     if ( m_benlever.clicked() )
+    {
+        std::cout << "Annuler espèce" << std::endl;
+    }
+
+     if ( m_bretour.clicked() )
+    {
+        std::cout << "retour au menu" << std::endl;
+
+    }
 }
 
-void Menu::creermenu2(Menu m)
-{
-     m.Menu2Update();
-}
 
 
 
