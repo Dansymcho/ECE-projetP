@@ -109,40 +109,13 @@
 1522929492 source:c:\users\clara\onedrive\documents\projet\projetc\graph.cpp
 	"graph.h"
 
-1522943328 source:c:\users\clara\ece-projetp\projetc2\graph.cpp
-	"graph.h"
-
-1522943088 c:\users\clara\ece-projetp\projetc2\graph.h
-	<vector>
-	<map>
-	<string>
-	<memory>
-	"grman/grman.h"
-
-1522752647 c:\users\clara\ece-projetp\projetc2\grman\grman.h
-	<allegro.h>
-	<string>
-	"grman_couleurs.h"
+1522752647 source:c:\users\clara\onedrive\documents\projet\projetc2\grman\coords.cpp
 	"coords.h"
-	"widget.h"
 
-1522752647 c:\users\clara\ece-projetp\projetc2\grman\grman_couleurs.h
-
-1522752647 c:\users\clara\ece-projetp\projetc2\grman\coords.h
+1522752647 c:\users\clara\onedrive\documents\projet\projetc2\grman\coords.h
 	<cmath>
 
-1522752647 c:\users\clara\ece-projetp\projetc2\grman\widget.h
-	"grman.h"
-	<iostream>
-	<string>
-	<vector>
-	<algorithm>
-	<allegro.h>
-
-1522752647 source:c:\users\clara\ece-projetp\projetc2\grman\coords.cpp
-	"coords.h"
-
-1522752647 source:c:\users\clara\ece-projetp\projetc2\grman\grman.cpp
+1522752647 source:c:\users\clara\onedrive\documents\projet\projetc2\grman\grman.cpp
 	<cmath>
 	<unordered_map>
 	<unordered_set>
@@ -156,11 +129,39 @@
 	<loadpng.h>
 	<jpgalleg.h>
 
-1522752647 source:c:\users\clara\ece-projetp\projetc2\grman\widget.cpp
+1522752647 c:\users\clara\onedrive\documents\projet\projetc2\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
 	"widget.h"
 
-1522943328 source:c:\users\clara\ece-projetp\projetc2\main.cpp
+1522752647 c:\users\clara\onedrive\documents\projet\projetc2\grman\grman_couleurs.h
+
+1522946291 c:\users\clara\onedrive\documents\projet\projetc2\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522752647 source:c:\users\clara\onedrive\documents\projet\projetc2\grman\widget.cpp
+	"widget.h"
+
+1523009672 source:c:\users\clara\onedrive\documents\projet\projetc2\main.cpp
 	"grman/grman.h"
 	<iostream>
 	"graph.h"
+
+1522945864 c:\users\clara\onedrive\documents\projet\projetc2\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1523009485 source:c:\users\clara\onedrive\documents\projet\projetc2\graph.cpp
+	"graph.h"
+	<fstream>
 

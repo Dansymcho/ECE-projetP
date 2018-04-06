@@ -10,8 +10,6 @@ int main()
    BITMAP *menu;
    menu = create_bitmap(SCREEN_W,SCREEN_H);
    menu = load_bitmap("pics/menu.bmp",NULL);
-   int choix = 0;
-   int *esc =0 ;
 
    Menu m2;
 
@@ -19,34 +17,33 @@ int main()
     /// Le nom du répertoire où se trouvent les images à charger
     grman::set_pictures_path("pics");
 
-    /// Un exemple de graphe
+    /*/// Un exemple de graphe
     Graph g;
-    //g.make_example();
+    g.make_example();*/
+    Graph g;
+    //g.lectureFichier("sforet.txt");
 
 
 
 
     /// Vous gardez la main sur la "boucle de jeu"
     /// ( contrairement à des frameworks plus avancés )
-    while ( !key[KEY_ESC])
+    while ( !key[KEY_ESC] )
     {
 
-//        m2.Menu2Update();
-      //m2.menu1(menu);
-      if(choix == 0)
-        {
-            choix = m2.menu1(menu);
-        m2.choixmenu1(choix, &g);
-        }
+
+        //Menu::creermenu2(m2);
+        m2.Menu2Update();
+      // m2.menu1(menu);
 
 
         /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
-        g.update();
+        //g.update();
 
         /// Mise à jour générale (clavier/souris/buffer etc...)
         grman::mettre_a_jour();
     }
-    main();
+
     grman::fermer_allegro();
 
     return 0;

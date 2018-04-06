@@ -115,11 +115,14 @@ class VertexInterface
         /// Une boite pour le label précédent
         grman::WidgetText m_box_label_idx;
 
+        grman::WidgetText m_label_crs;
+        grman::WidgetText m_box_label_crs;
+
     public :
 
         /// Le constructeur met en place les éléments de l'interface
         /// voir l'implémentation dans le .cpp
-        VertexInterface(int idx, int x, int y, std::string pic_name="", int pic_idx=0);
+        VertexInterface(int idx,float crs, int x, int y, std::string pic_name="", int pic_idx=0);
 };
 
 
@@ -141,6 +144,7 @@ class Vertex
 
         /// un exemple de donnée associée à l'arc, on peut en ajouter d'autres...
         double m_value;
+        float croissance;
 
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
         std::shared_ptr<VertexInterface> m_interface = nullptr;
@@ -264,17 +268,6 @@ class GraphInterface
         /// Dans cette boite seront ajoutés des boutons de contrôle etc...
         grman::WidgetBox m_tool_box;
 
-    grman::WidgetBox m_menu2;
-    grman::WidgetBox m_titre;
-    grman::WidgetText m_ssmenu;
-    grman::WidgetButton m_bnouveau;
-    grman::WidgetText m_nouveau;
-    grman::WidgetButton m_benlever;
-    grman::WidgetText m_enlever;
-    grman::WidgetButton m_bretour;
-    grman::WidgetText m_retour;
-
-
 
         /// A compléter éventuellement par des widgets de décoration ou
         /// d'édition (boutons ajouter/enlever ...)
@@ -311,7 +304,7 @@ class Graph
         Graph (GraphInterface *interface=nullptr) :
             m_interface(interface)  {  }
 
-        void add_interfaced_vertex(int idx, double value, int x, int y, std::string pic_name="", int pic_idx=0 );
+        void add_interfaced_vertex(int idx, double value,float croissance, int x, int y, std::string pic_name="", int pic_idx=0 );
         void add_interfaced_edge(int idx, int vert1, int vert2, double weight=0);
 
         /// Méthode spéciale qui construit un graphe arbitraire (démo)
@@ -319,6 +312,10 @@ class Graph
         /// Cette méthode est à enlever et remplacer par un système
         /// de chargement de fichiers par exemple.
         void make_example();
+
+        void lectureFichier(std::string nom);
+        void sauvegarde();
+        //void boucle();
 
        /* ///creer menu
         int menu(BITMAP *menu);
@@ -338,20 +335,14 @@ private:
     int mn;
     grman::WidgetBox m_menu2;
     grman::WidgetBox m_titre;
-    grman::WidgetText m_ssmenu;
-    grman::WidgetButton m_bnouveau;
-    grman::WidgetText m_nouveau;
-    grman::WidgetButton m_benlever;
-    grman::WidgetText m_enlever;
-    grman::WidgetButton m_bretour;
-    grman::WidgetText m_retour;
+    grman::WidgetText m_legende;
 
 public:
     Menu();
     //~Menu();
     int menu1(BITMAP *menu);
-    void choixmenu1(int mn, Graph *g);
-
+    void choixmenu1(int mn);
+    void creermenu2(Menu m2);
     void Menu2Update();
 
 
