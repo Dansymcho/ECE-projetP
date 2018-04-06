@@ -268,6 +268,16 @@ class GraphInterface
         /// Dans cette boite seront ajoutés des boutons de contrôle etc...
         grman::WidgetBox m_tool_box;
 
+        grman::WidgetBox m_menu2;
+        grman::WidgetBox m_titre;
+        grman::WidgetText m_ssmenu;
+        grman::WidgetButton m_bnouveau;
+        grman::WidgetText m_nouveau;
+        grman::WidgetButton m_benlever;
+        grman::WidgetText m_enlever;
+        grman::WidgetButton m_bretour;
+        grman::WidgetText m_retour;
+
 
         // A compléter éventuellement par des widgets de décoration ou
         // d'édition (boutons ajouter/enlever ...)
@@ -308,12 +318,37 @@ class Graph
         /// Voir implémentation dans le .cpp
         /// Cette méthode est à enlever et remplacer par un système
         /// de chargement de fichiers par exemple.
-        void lectureFichier();
-        void sauvegarde();
+        void lectureFichier(std::string fichS, std::string fichA);
+        void sauvegarde(std::string SfichS,std::string SfichA);
 
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
-        void update();
+        void update(int &u);
+};
+
+class Menu
+{
+private:
+    int mn;
+    grman::WidgetBox m_menu2;
+    grman::WidgetBox m_titre;
+    grman::WidgetText m_ssmenu;
+    grman::WidgetButton m_bnouveau;
+    grman::WidgetText m_nouveau;
+    grman::WidgetButton m_benlever;
+    grman::WidgetText m_enlever;
+    grman::WidgetButton m_bretour;
+    grman::WidgetText m_retour;
+
+public:
+    Menu();
+    //~Menu();
+    int menu1(BITMAP *menu);
+    void choixmenu1(int mn, Graph *g,int &u);
+
+    void Menu2Update();
+
+
 };
 
 

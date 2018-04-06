@@ -14,7 +14,7 @@ VertexInterface::VertexInterface(int idx,float crs, int x, int y, std::string pi
 
     // Le slider de réglage de valeur
     m_top_box.add_child( m_slider_value );
-    m_slider_value.set_range(0.0 , 100.0); // Valeurs arbitraires, à adapter...
+    m_slider_value.set_range(0.0, 100.0);  // Valeurs arbitraires, à adapter...
     m_slider_value.set_dim(20,80);
     m_slider_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Up);
 
@@ -100,7 +100,7 @@ EdgeInterface::EdgeInterface(Vertex& from, Vertex& to)
 
     // Le slider de réglage de valeur
     m_box_edge.add_child( m_slider_weight );
-    m_slider_weight.set_range(0.0 , 100.0); // Valeurs arbitraires, à adapter...
+    m_slider_weight.set_range(0.0, 100.0);  // Valeurs arbitraires, à adapter...
     m_slider_weight.set_dim(16,40);
     m_slider_weight.set_gravity_y(grman::GravityY::Up);
 
@@ -156,114 +156,100 @@ GraphInterface::GraphInterface(int x, int y, int w, int h)
     m_main_box.set_dim(908,720);
     m_main_box.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
     m_main_box.set_bg_color(BLANCJAUNE);
+
+    m_top_box.add_child(m_menu2);
+    ///boite du menu2
+    m_menu2.set_frame(700, 420, 200, 180);
+    m_menu2.set_bg_color(GRISCLAIR);
+    m_menu2.set_moveable();
+
+    ///boite titre
+    m_menu2.add_child( m_titre );
+    m_titre.set_dim(180, 20);
+    m_titre.set_gravity_y( grman::GravityY::Up );
+
+
+    ///message : sous-menu
+    m_titre.add_child( m_ssmenu );
+    m_ssmenu.set_message("SOUS-MENU");
+    m_ssmenu.set_gravity_y(grman::GravityY::Up );
+
+
+    ///bouton ajout
+    m_menu2.add_child( m_bnouveau );
+    m_bnouveau.set_frame(12,40,180,30);
+    m_bnouveau.set_bg_color(BLEU);
+
+    ///message ajout
+    m_bnouveau.add_child(m_nouveau);
+    m_nouveau.set_message("Nouvelle espèce");
+
+    ///boite enlever
+    m_menu2.add_child( m_benlever );
+    m_benlever.set_frame(12,80,180,30);
+    m_benlever.set_bg_color(BLEU);
+
+    ///messge enlever
+    m_benlever.add_child(m_enlever);
+    m_enlever.set_message("Annuler espèce");
+
+    ///boite retour
+    m_menu2.add_child( m_bretour );
+    m_bretour.set_frame(12,120,180,30);
+    m_bretour.set_bg_color(BLEU);
+
+    ///message retour
+    m_bretour.add_child(m_retour);
+    m_retour.set_message("Sauvegarder");
 }
 
-
-/// Méthode spéciale qui construit un graphe arbitraire (démo)
-/// Cette méthode est à enlever et remplacer par un système
-/// de chargement de fichiers par exemple.
-/// Bien sûr on ne veut pas que vos graphes soient construits
-/// "à la main" dans le code comme ça.
-/*void Graph::make_example()
+void Graph::lectureFichier(std::string fichS,std::string fichA)
 {
     m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600);
-    // La ligne précédente est en gros équivalente à :
-    // m_interface = new GraphInterface(50, 0, 750, 600);
+    std::ifstream fichier(fichS, std::ios::in);  // on ouvre le fichier en lecture
+    if(fichier)  // si l'ouverture a réussi
+    {
+        int nb_sommet;
 
-    /// Les sommets doivent être définis avant les arcs
-    // Ajouter le sommet d'indice 0 de valeur 30 en x=200 et y=100 avec l'image clown1.jpg etc...
+        fichier >> nb_sommet;
 
-    add_interfaced_vertex(0, 100.0,1.5, 200, 400, "clown1.jpg");
-    add_interfaced_vertex(1, 50.0,1.2, 400, 200, "clown2.jpg");
-    add_interfaced_vertex(2,  10.0,1.1, 600, 200, "clown3.jpg");
-    //add_interfaced_vertex(3,  0.0, 400, 300, "clown4.jpg");
-    //add_interfaced_vertex(4,  100.0, 600, 300, "clown5.jpg");
-    //add_interfaced_vertex(5,  0.0, 100, 500, "bad_clowns_xx3xx.jpg", 0);
-    //add_interfaced_vertex(6,  0.0, 300, 500, "bad_clowns_xx3xx.jpg", 1);
-    //add_interfaced_vertex(7,  0.0, 500, 500, "bad_clowns_xx3xx.jpg", 2);
-
-    /// Les arcs doivent être définis entre des sommets qui existent !
-    // AJouter l'arc d'indice 0, allant du sommet 1 au sommet 2 de poids 50 etc...
-    add_interfaced_edge(0, 1, 2, 50.0);
-    add_interfaced_edge(1, 0, 1, 50.0);
-    add_interfaced_edge(2, 0, 2, 75.0);
-    //add_interfaced_edge(3, 4, 1, 25.0);
-    //add_interfaced_edge(4, 6, 3, 25.0);
-    //add_interfaced_edge(5, 7, 3, 25.0);
-    //add_interfaced_edge(6, 3, 4, 0.0);
-    //add_interfaced_edge(7, 2, 0, 100.0);
-    //add_interfaced_edge(8, 5, 2, 20.0);
-    //add_interfaced_edge(9, 3, 7, 80.0);
-}*/
-void Graph::lectureFichier()
-{
-    m_interface = std::make_shared<GraphInterface>(50, 0, 750, 600);
-    std::ifstream fichier("Sommet.txt", std::ios::in);  // on ouvre le fichier en lecture
-        if(fichier)  // si l'ouverture a réussi
+        for (int i=0; i<nb_sommet; i++)
         {
-            int nb_sommet;
-
-            fichier >> nb_sommet;
-
-        for (int i=0;i<nb_sommet;i++)
-            {
-                int ind,x,y;
-                double N,R;
-                std::string img;
-                fichier >> ind >> N >> R >> x >> y >> img;
-                add_interfaced_vertex(ind,N,R,x,y,img);
-            }
-
-
-                fichier.close();  // on ferme le fichier
+            int ind,x,y;
+            double N,R;
+            std::string img;
+            fichier >> ind >> N >> R >> x >> y >> img;
+            add_interfaced_vertex(ind,N,R,x,y,img);
         }
 
-        std::ifstream fich("Arete.txt", std::ios::in);  // on ouvre le fichier en lecture
-        if(fich)  // si l'ouverture a réussi
+
+        fichier.close();  // on ferme le fichier
+    }
+
+    std::ifstream fich(fichA, std::ios::in);  // on ouvre le fichier en lecture
+    if(fich)  // si l'ouverture a réussi
+    {
+        int nb_arete;
+        fich >> nb_arete;
+
+        for (int i=0; i<nb_arete; i++)
         {
+            int ind,S1,S2;
+            double Weight;
+            fich >> ind >> S1 >> S2 >> Weight;
+            add_interfaced_edge(ind, S1, S2, Weight);
 
-        for (int i=0;i<3;i++)
-            {
-                int ind,S1,S2;
-                double Weight;
-                fich >> ind >> S1 >> S2 >> Weight;
-                add_interfaced_edge(ind, S1, S2, Weight);
-            }
-
-
-                fich.close();  // on ferme le fichier
         }
 
-        else  // sinon
-                std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
+
+        fich.close();  // on ferme le fichier
+    }
+
+    else  // sinon
+        std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
 }
 
-/*void Graph::sauvegarde()
-{
-    std::ofstream fichier("Sommet.txt", std::ios::out | std::ios::trunc);  // ouverture en écriture avec effacement du fichier ouvert
-
-        if(fichier)
-        {
-
-                fichier.close();
-        }
-        else
-                std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
-
-    std::ofstream fich("Arete.txt", std::ios::out | std::ios::trunc);  // ouverture en écriture avec effacement du fichier ouvert
-
-        if(fich)
-        {
-
-
-                fich.close();
-        }
-        else
-                std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
-}
-/// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
-*/
-void Graph::sauvegarde()
+void Graph::sauvegarde(std::string SfichS,std::string SfichA)
 {
     int idx,x, y, pic_idx=0, vert1, vert2;
     double value, weight=0;
@@ -271,14 +257,14 @@ void Graph::sauvegarde()
 
     std::string pic_name="";
 
-    std::ofstream fichier("Sommet.txt", std::ios::out | std::ios::trunc);
-    update();
-    grman::mettre_a_jour();
+    std::ofstream fichier(SfichS, std::ios::out | std::ios::trunc);
+   // update(u);
+   // grman::mettre_a_jour();
 
     fichier<<m_vertices.size()<<"\n";
 
 
-    for(int i=0;i<m_vertices.size(); i++)
+    for(int i=0; i<m_vertices.size(); i++)
     {
         fichier<<m_vertices[i].m_interface->m_label_idx.get_message();
         fichier<<" "<<m_vertices[i].m_interface->m_label_value.get_message();
@@ -288,23 +274,23 @@ void Graph::sauvegarde()
         fichier<<" "<<m_vertices[i].m_interface->m_img.get_pic_name()<<"\n";
     }
 
-    std::ofstream fich("Test.txt", std::ios::out | std::ios::trunc);
+    fichier.close();
+
+    std::ofstream fich(SfichA, std::ios::out | std::ios::trunc);
 
     fich<<m_vertices.size()<<"\n";
 
 
-    for(int i=0;i<m_vertices.size(); i++)
+    for(int i=0; i<m_edges.size(); i++)
     {
-        fich<<m_vertices[i].m_interface->m_label_idx.get_message();
-        fich<<" "<<m_vertices[i].m_interface->m_label_value.get_message();
-        fich<<" "<<m_vertices[i].m_interface->m_label_crs.get_message();
-        fich<<" "<<m_vertices[i].m_interface->m_top_box.get_posx();
-        fich<<" "<<m_vertices[i].m_interface->m_top_box.get_posy();
-        fich<<" "<<m_vertices[i].m_interface->m_img.get_pic_name()<<"\n";
+        fich<<i; //id
+        fich<<" "<<m_edges[i].m_from; //S1
+        fich<<" "<<m_edges[i].m_to; //S2
+        fich<<" "<<m_edges[i].m_interface->m_slider_weight.get_value()<<"\n"; //poid
     }
-}
 
-void Graph::update()
+}
+void Graph::update(int &u)
 {
     if (!m_interface)
         return;
@@ -323,6 +309,44 @@ void Graph::update()
     for (auto &elt : m_edges)
         elt.second.post_update();
 
+        if ( m_interface->m_bnouveau.clicked() )
+    {
+        std::cout << "Nouvelle espèce" << std::endl;
+
+       //Ajoutespece(m_vertices,m_edges);
+
+    }
+
+     if ( m_interface->m_benlever.clicked() )
+    {
+        std::cout << "Annuler espèce" << std::endl;
+    }
+
+     if ( m_interface->m_bretour.clicked() )
+    {
+        std::string SfichierS,SfichierA;
+        std::cout << "Sauvegarde effectuee" << std::endl;
+        if (u==1)
+        {
+            SfichierS="sforet.txt";
+            SfichierA="aforet.txt";
+            sauvegarde(SfichierS,SfichierA);
+        }
+
+        else if (u==2)
+        {
+            SfichierS="sjungle.txt";
+            SfichierA="ajungle.txt";
+            sauvegarde(SfichierS,SfichierA);
+        }
+
+        if (u==3)
+        {
+            SfichierS="smers.txt";
+            SfichierA="amers.txt";
+            sauvegarde(SfichierS,SfichierA);
+        }
+    }
 }
 
 /// Aide à l'ajout de sommets interfacés
@@ -367,6 +391,138 @@ void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weig
     m_vertices[id_vert2].m_in.push_back(idx);
 }
 
+
+/***************************************************
+                    Menu
+****************************************************/
+
+
+int Menu::menu1(BITMAP *menu)
+{
+    blit(menu, grman::page, 0,0,0,0,SCREEN_W,SCREEN_H);
+    blit(grman::page,screen, 0,0,0,0,SCREEN_W,SCREEN_H);
+
+    int mn;
+    if((mouse_b&1) && (mouse_x>230 && mouse_x<570))
+    {
+
+        if(mouse_y>80 && mouse_y<165)
+        {
+            mn=1;
+
+
+            return mn;
+        }
+
+
+        if(mouse_y>215 && mouse_y<300)
+        {
+            mn=2;
+            return mn;
+        }
+        if(mouse_y>345 && mouse_y<425)
+        {
+            mn=3;
+            return mn;
+        }
+        ///pour quitter le jeu
+        if(mouse_y>480 && mouse_y<560)
+            exit(0);
+    }
+}
+
+
+void Menu::choixmenu1(int mn, Graph *g,int &u)
+{
+    std::string fichS;
+    std::string fichA;
+    switch(mn)
+    {
+    case 1:
+        clear_bitmap(screen);
+
+
+        //g->make_example();
+        fichS="sforet.txt";
+        fichA="aforet.txt";
+        g->lectureFichier(fichS, fichA);
+        u=1;
+        break;
+
+    case 2:
+        clear_bitmap(screen);
+
+        fichS="sjungle.txt";
+        fichA="ajungle.txt";
+        //g->make_example();
+        g->lectureFichier(fichS, fichA);
+        u=2;
+
+        break;
+
+    case 3:
+
+        clear_bitmap(screen);
+
+        fichS="smers.txt";
+        fichA="amers.txt";
+        //g->make_example();
+        g->lectureFichier(fichS, fichA);
+        u=3;
+        break;
+    }
+
+}
+
+Menu::Menu()
+{
+    ///boite du menu2
+    m_menu2.set_frame(600, 420, 200, 180);
+    m_menu2.set_bg_color(GRISCLAIR);
+    m_menu2.set_moveable();
+
+    ///boite titre
+    m_menu2.add_child( m_titre );
+    m_titre.set_dim(180, 20);
+    m_titre.set_gravity_y( grman::GravityY::Up );
+
+
+    ///message : sous-menu
+    m_titre.add_child( m_ssmenu );
+    m_ssmenu.set_message("SOUS-MENU");
+    m_ssmenu.set_gravity_y(grman::GravityY::Up );
+
+
+    ///bouton ajout
+    m_menu2.add_child( m_bnouveau );
+    m_bnouveau.set_frame(12,40,180,30);
+    m_bnouveau.set_bg_color(BLEU);
+
+    ///message ajout
+    m_bnouveau.add_child(m_nouveau);
+    m_nouveau.set_message("Nouvelle espèce");
+
+    ///boite enlever
+    m_menu2.add_child( m_benlever );
+    m_benlever.set_frame(12,80,180,30);
+    m_benlever.set_bg_color(BLEU);
+
+    ///messge enlever
+    m_benlever.add_child(m_enlever);
+    m_enlever.set_message("Annuler espèce");
+
+    ///boite retour
+    m_menu2.add_child( m_bretour );
+    m_bretour.set_frame(12,120,180,30);
+    m_bretour.set_bg_color(BLEU);
+
+    ///message retour
+    m_bretour.add_child(m_retour);
+    m_retour.set_message("Sauvegarder");
+
+}
+
+
 /*/// eidx index of edge to remove
 /*void Graph::test_remove_edge(int eidx)
 {
@@ -385,30 +541,30 @@ void Graph::add_interfaced_edge(int idx, int id_vert1, int id_vert2, double weig
         {
     /// Ne pas oublier qu'on a fait ça à l'ajout de l'arc :
     /* EdgeInterface *ei = new EdgeInterface(m_vertices[id_vert1], m_vertices[id_vert2]); */
-    /* m_interface->m_main_box.add_child(ei->m_top_edge); */
-    /* m_edges[idx] = Edge(weight, ei);
-    /// Le new EdgeInterface ne nécessite pas de delete car on a un shared_ptr
-    /// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
-    /// mais il faut bien enlever le conteneur d'interface m_top_edge de l'arc de la main_box du graphe
-    m_interface->m_main_box.remove_child( remed.m_interface->m_top_edge );
+/* m_interface->m_main_box.add_child(ei->m_top_edge); */
+/* m_edges[idx] = Edge(weight, ei);
+/// Le new EdgeInterface ne nécessite pas de delete car on a un shared_ptr
+/// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
+/// mais il faut bien enlever le conteneur d'interface m_top_edge de l'arc de la main_box du graphe
+m_interface->m_main_box.remove_child( remed.m_interface->m_top_edge );
 }
 
-    /// Il reste encore à virer l'arc supprimé de la liste des entrants et sortants des 2 sommets to et from !
-    /// References sur les listes de edges des sommets from et to
-    std::vector<int> &vefrom = m_vertices[remed.m_from].m_out;
-    std::vector<int> &veto = m_vertices[remed.m_to].m_in;
-    vefrom.erase( std::remove( vefrom.begin(), vefrom.end(), eidx ), vefrom.end() );
-    veto.erase( std::remove( veto.begin(), veto.end(), eidx ), veto.end() );
+/// Il reste encore à virer l'arc supprimé de la liste des entrants et sortants des 2 sommets to et from !
+/// References sur les listes de edges des sommets from et to
+std::vector<int> &vefrom = m_vertices[remed.m_from].m_out;
+std::vector<int> &veto = m_vertices[remed.m_to].m_in;
+vefrom.erase( std::remove( vefrom.begin(), vefrom.end(), eidx ), vefrom.end() );
+veto.erase( std::remove( veto.begin(), veto.end(), eidx ), veto.end() );
 
-    /// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
-    /// Il suffit donc de supprimer l'entrée de la map pour supprimer à la fois l'Edge et le EdgeInterface
-    /// mais malheureusement ceci n'enlevait pas automatiquement l'interface top_edge en tant que child de main_box !
-    m_edges.erase( eidx );
+/// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
+/// Il suffit donc de supprimer l'entrée de la map pour supprimer à la fois l'Edge et le EdgeInterface
+/// mais malheureusement ceci n'enlevait pas automatiquement l'interface top_edge en tant que child de main_box !
+m_edges.erase( eidx );
 
-    /// Tester la cohérence : nombre d'arc entrants et sortants des sommets 1 et 2
-    std::cout << m_vertices[remed.m_from].m_in.size() << " " << m_vertices[remed.m_from].m_out.size() << std::endl;
-    std::cout << m_vertices[remed.m_to].m_in.size() << " " << m_vertices[remed.m_to].m_out.size() << std::endl;
-    std::cout << m_edges.size() << std::endl;
+/// Tester la cohérence : nombre d'arc entrants et sortants des sommets 1 et 2
+std::cout << m_vertices[remed.m_from].m_in.size() << " " << m_vertices[remed.m_from].m_out.size() << std::endl;
+std::cout << m_vertices[remed.m_to].m_in.size() << " " << m_vertices[remed.m_to].m_out.size() << std::endl;
+std::cout << m_edges.size() << std::endl;
 
 }*/
 
