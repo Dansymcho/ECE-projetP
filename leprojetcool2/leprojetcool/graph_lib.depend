@@ -1,0 +1,113 @@
+# depslib dependency file v1.0
+1522575070 source:c:\users\dan symchowicz\desktop\projet prof\graph_lib_exemple_graph\grman\coords.cpp
+	"coords.h"
+
+1522575426 c:\users\dan symchowicz\desktop\projet prof\graph_lib_exemple_graph\grman\coords.h
+	<cmath>
+
+1523028199 source:c:\users\dan symchowicz\desktop\projet prof\graph_lib_exemple_graph\graph.cpp
+	"graph.h"
+	<fstream>
+
+1523028879 c:\users\dan symchowicz\desktop\projet prof\graph_lib_exemple_graph\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1522539042 c:\users\dan symchowicz\desktop\projet prof\graph_lib_exemple_graph\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1509222374 c:\users\dan symchowicz\desktop\projet prof\graph_lib_exemple_graph\grman\grman_couleurs.h
+
+1522922206 c:\users\dan symchowicz\desktop\projet prof\graph_lib_exemple_graph\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522515824 source:c:\users\dan symchowicz\desktop\projet prof\graph_lib_exemple_graph\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522922183 source:c:\users\dan symchowicz\desktop\projet prof\graph_lib_exemple_graph\grman\widget.cpp
+	"widget.h"
+
+1523022879 source:c:\users\dan symchowicz\desktop\projet prof\graph_lib_exemple_graph\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
+1523120497 source:c:\users\clara\onedrive\documents\projet\leprojetcool\graph.cpp
+	"graph.h"
+	<fstream>
+
+1523121768 c:\users\clara\onedrive\documents\projet\leprojetcool\graph.h
+	<vector>
+	<map>
+	<string>
+	<memory>
+	"grman/grman.h"
+
+1523030562 c:\users\clara\onedrive\documents\projet\leprojetcool\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1523030562 c:\users\clara\onedrive\documents\projet\leprojetcool\grman\grman_couleurs.h
+
+1523030562 c:\users\clara\onedrive\documents\projet\leprojetcool\grman\coords.h
+	<cmath>
+
+1523030562 c:\users\clara\onedrive\documents\projet\leprojetcool\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1523030562 source:c:\users\clara\onedrive\documents\projet\leprojetcool\grman\coords.cpp
+	"coords.h"
+
+1523030562 source:c:\users\clara\onedrive\documents\projet\leprojetcool\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1523030562 source:c:\users\clara\onedrive\documents\projet\leprojetcool\grman\widget.cpp
+	"widget.h"
+
+1523120482 source:c:\users\clara\onedrive\documents\projet\leprojetcool\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+

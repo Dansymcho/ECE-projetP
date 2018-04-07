@@ -1,0 +1,11 @@
+10
+0 30 1.400000 390 24 vegetal.jpg
+1 60 1.400000 645 12 fourmi.jpg
+2 50 1.400000 78 119 campagnol.jpg
+3 30 1.400000 611 320 ecureuil.jpg
+4 60 1.400000 357 176 chevreuil.jpg
+5 50 1.400000 175 9 sanglier.jpg
+6 30 1.400000 155 305 cerf.jpg
+7 60 1.400000 505 473 chouette.jpg
+8 50 1.400000 161 484 renard.jpg
+9 0 1.100000 753 153 fourmi.jpg
